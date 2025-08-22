@@ -11,6 +11,7 @@ import (
 	"go.rumenx.com/sudoku"
 )
 
+
 var (
 	// override with -ldflags "-X main.version=... -X main.commit=... -X main.date=..."
 	version = "dev"
@@ -96,6 +97,11 @@ func handleGenerate(w http.ResponseWriter, r *http.Request) {
 	// variable size path
 	if req.Size <= 0 || req.Box == "" {
 		writeJSON(w, http.StatusBadRequest, errMsg("size and box required for variable grid"))
+		return
+	}
+	if req.Size > sudoku.MaxGridSize {
+		writeJSON(w, http.StatusBadRequest, errMsg(fmt.Sprintf(
+			"grid size %d exceeds maximum allowed (%d)", req.Size, sudoku.MaxGridSize)))
 		return
 	}
 	var br, bc int

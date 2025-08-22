@@ -5,6 +5,9 @@ import (
 	"fmt"
 )
 
+// Maximum allowed grid size to prevent excessive memory usage.
+const MaxGridSize = 25
+
 // Grid is a generalised Sudoku grid of size SxS with sub-boxes boxRows x boxCols,
 // where S == boxRows*boxCols. Values are in [0..S], 0 meaning empty.
 type Grid struct {
@@ -18,6 +21,9 @@ type Grid struct {
 func NewGrid(size, boxRows, boxCols int) (Grid, error) {
 	if size <= 0 || boxRows <= 0 || boxCols <= 0 || size != boxRows*boxCols {
 		return Grid{}, fmt.Errorf("invalid dimensions: size=%d boxRows=%d boxCols=%d", size, boxRows, boxCols)
+	}
+	if size > MaxGridSize {
+		return Grid{}, fmt.Errorf("grid size %d exceeds maximum allowed (%d)", size, MaxGridSize)
 	}
 	g := Grid{Size: size, BoxRows: boxRows, BoxCols: boxCols, Cells: make([][]int, size)}
 	for i := range g.Cells {
