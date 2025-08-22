@@ -1,0 +1,23 @@
+# Ignore everything not needed for building
+**/.git
+**/.github
+**/.vscode
+**/.ai
+**/*.md
+**/*.MD
+**/*.txt
+**/*.log
+**/.DS_Store
+**/coverage.*
+**/*.out
+**/*.coverprofile
+**/profile.cov
+**/bin
+
+# Keep only necessary files
+!go.mod
+!go.sum
+!cmd/**
+!*.go
+!Makefile
+!Dockerfile
