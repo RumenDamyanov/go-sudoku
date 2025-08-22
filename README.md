@@ -1,8 +1,12 @@
 # go-sudoku
 
-[![CI](https://img.shields.io/github/actions/workflow/status/RumenDamyanov/go-sudoku/ci.yml?branch=master&logo=github)](../../actions)
+[![CI](https://github.com/rumendamyanov/go-sudoku/actions/workflows/ci.yml/badge.svg)](https://github.com/rumendamyanov/go-sudoku/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/rumendamyanov/go-sudoku/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/rumendamyanov/go-sudoku/actions/workflows/github-code-scanning/codeql)
+[![Dependabot](https://github.com/rumendamyanov/go-sudoku/actions/workflows/dependabot/dependabot-updates/badge.svg)](https://github.com/rumendamyanov/go-sudoku/actions/workflows/dependabot/dependabot-updates)
+[![codecov](https://codecov.io/gh/rumendamyanov/go-sudoku/graph/badge.svg)](https://codecov.io/gh/rumendamyanov/go-sudoku)
+[![Go Report Card](https://goreportcard.com/badge/go.rumenx.com/sudoku?5)](https://goreportcard.com/report/go.rumenx.com/sudoku)
 [![Go Reference](https://pkg.go.dev/badge/go.rumenx.com/sudoku.svg)](https://pkg.go.dev/go.rumenx.com/sudoku)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE.md)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/rumendamyanov/go-sudoku/blob/master/LICENSE.md)
 
 Fast, dependency-light Sudoku generator & solver for Go — classic 9x9 plus configurable smaller grids — with guaranteed unique puzzles, deterministic seeding, CLI, REST server, and optional GUI.
 
