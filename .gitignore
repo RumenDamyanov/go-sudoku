@@ -35,3 +35,6 @@ bin/
 dist/
 *.log
 coverage.out
+
+# Other
+.DS_Store
