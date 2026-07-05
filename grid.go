@@ -159,8 +159,13 @@ func (g Grid) Generate(d Difficulty, attempts int) (Grid, error) {
 		solved := g.Clone()
 		solved.fillDiagonalBoxes()
 		if !g.backtrack(&solved) {
-			lastErr = errors.New("failed to build solved grid")
-			continue
+			// Some random diagonal pre-fills can be unsatisfiable for a valid grid.
+			// Retry from an empty grid before failing this attempt.
+			solved = g.Clone()
+			if !g.backtrack(&solved) {
+				lastErr = errors.New("failed to build solved grid")
+				continue
+			}
 		}
 		target := g.cluesFor(d)
 		puzzle := solved.Clone()
