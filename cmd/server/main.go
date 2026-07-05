@@ -11,7 +11,6 @@ import (
 	"go.rumenx.com/sudoku"
 )
 
-
 var (
 	// override with -ldflags "-X main.version=... -X main.commit=... -X main.date=..."
 	version = "dev"
