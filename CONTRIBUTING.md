@@ -5,7 +5,7 @@ Thanks for your interest in improving `go-sudoku`.
 ## Quick Start
 
 1. Fork & clone the repo.
-2. Ensure you have Go 1.22+.
+2. Ensure you have Go 1.26.10+. Go 1.25 and older are end of life.
 3. Run tests: `go test ./...` (should be green).
 4. Make focused changes (small, single-topic commits).
 5. Add/adjust tests when you change behavior.

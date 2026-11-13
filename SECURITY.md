@@ -8,6 +8,8 @@ We release patches for security vulnerabilities. Which versions are eligible for
 | ------- | ------------------ |
 | 1.0.x   | :white_check_mark: |
 
+Build with **Go 1.26.10** or newer. Go 1.25 and older are end of life and do not include the October 2026 toolchain fixes. The GUI also requires `golang.org/x/net` v0.60.0.
+
 ## Reporting a Vulnerability
 
 The go-sudoku team and community take security bugs seriously. We appreciate your efforts to responsibly disclose your findings, and will make every effort to acknowledge your contributions.

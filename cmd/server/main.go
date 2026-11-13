@@ -13,7 +13,7 @@ import (
 
 var (
 	// override with -ldflags "-X main.version=... -X main.commit=... -X main.date=..."
-	version = "dev"
+	version = "1.0.0"
 	commit  = "none"
 	date    = "unknown"
 )

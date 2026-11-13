@@ -8,7 +8,7 @@
 [![Go Reference](https://pkg.go.dev/badge/go.rumenx.com/sudoku.svg)](https://pkg.go.dev/go.rumenx.com/sudoku)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/rumendamyanov/go-sudoku/blob/master/LICENSE.md)
 
-Fast, dependency-light Sudoku generator & solver for Go — classic 9x9 plus configurable smaller grids — with guaranteed unique puzzles, deterministic seeding, CLI, REST server, and optional GUI.
+Fast, dependency-light Sudoku generator & solver for Go — classic 9x9 plus configurable grids up to 25x25 — with guaranteed unique puzzles, deterministic seeding, CLI, REST server, and optional GUI.
 
 ## Highlights
 
@@ -18,32 +18,27 @@ Fast, dependency-light Sudoku generator & solver for Go — classic 9x9 plus con
 - 🧪 >90% core test coverage & CLI / server exercised
 - 🌐 Minimal REST server (generate / solve)
 - 💻 CLI (generate / solve / hint / variable sizes) & optional Fyne GUI (`-tags gui`)
-- 🧱 General `Grid` API for 4x4, 6x6, 9x9 (and other <=9 sizes with box layout)
+- 🧱 General `Grid` API for any size up to 25x25 where size = box rows × box columns (for example 4x4, 6x6, and 9x9)
 - 🔍 Hint helpers for both classic `Board` and general `Grid`
 
 ## Install
 
 ```sh
 go get go.rumenx.com/sudoku@latest
+```
+
+```go
+package main
 
 import (
 	"fmt"
+
 	"go.rumenx.com/sudoku"
 )
+
 func main() {
 	puz, _ := sudoku.Generate(sudoku.Medium, 1)
 	fmt.Println("Puzzle (string):", puz.String())
-	if sol, ok := sudoku.Solve(puz); ok {
-	fmt.Println("Solved:", sol.String())
-	}
-}
-import (
-	"fmt"
-	"go.rumenx.com/sudoku"
-)
-func main() {
-	puz, _ := sudoku.Generate(sudoku.Medium, 1)
-curl -s localhost:8080/health
 	if sol, ok := sudoku.Solve(puz); ok {
 		fmt.Println("Solved:", sol.String())
 	}
@@ -276,12 +271,21 @@ back, err := sudoku.FromString(str)
 
 - Solve a puzzle and validate:
 
+```go
+sol, ok := sudoku.Solve(back)
+if !ok {
+	// unsolvable
+}
+if err := sudoku.Validate(sol); err != nil {
+	// invalid
+}
 ```
+
 An optional desktop GUI demo is included under `cmd/gui` using Fyne. It’s behind a build tag (`gui`) so the core module remains stdlib-only by default.
 
 Requirements:
 
-- Go 1.22+
+- Go 1.26.10+
 - Fyne toolkit: `go get fyne.io/fyne/v2`
 
 Run the GUI:

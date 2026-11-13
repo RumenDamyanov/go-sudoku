@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 # Build stage
-FROM golang:1.22-alpine AS build
+FROM golang:1.26.10-alpine AS build
 WORKDIR /app
 
 # Enable modules and cache deps
@@ -16,7 +16,7 @@ COPY . .
 # Build static binary for linux
 RUN --mount=type=cache,target=/root/.cache/go-build \
     CGO_ENABLED=0 GOOS=linux GOARCH=amd64 \
-    go build -trimpath -ldflags "-s -w" -o /out/server ./cmd/server
+    go build -trimpath -ldflags "-s -w -X main.version=1.0.0" -o /out/server ./cmd/server
 
 # Runtime stage (distroless)
 FROM gcr.io/distroless/static-debian12:nonroot
